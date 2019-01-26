@@ -1,0 +1,13 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+    "adminUserName": { "value": "azureadmin" },
+    "adminPassword": { "value": "Azure12345678" },
+    "dnsLabelPrefix": { "value": "dc1pubdns"},
+    "dnsLabelPrefix2": { "value": "ca1pubdns"},
+    "OSVersion": { "value": "2016-Datacenter-Server-Core"},
+    "imagePublisher": { "value": "MicrosoftWindowsServer"},
+    "imageOffer": {"value": "WindowsServer"}
+    }
+}

@@ -1,0 +1,301 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+      "adminUsername": {
+        "type": "string",
+        "metadata": {
+          "description": "Admin username"
+        }
+      },
+      "adminPassword": {
+        "type": "securestring",
+        "metadata": {
+          "description": "Admin password"
+        }
+      },
+      "dnsLabelPrefix": {
+        "type": "string",
+        "metadata": {
+          "description": "[concat(variables('vmName'), ' DNS for PublicIPAddress')]"
+        }
+      },
+      "dnsLabelPrefix2": {
+        "type": "string",
+        "metadata": {
+          "description": "[concat(variables('vmName2'), ' DNS for PublicIPAddress')]"
+        }
+      },
+      "OSVersion": {
+        "type": "string",
+        "allowedValues": [
+          "2012-Datacenter",
+          "2012-R2-Datacenter",
+          "2016-Nano-Server",
+          "2016-Datacenter-with-Containers",
+          "2016-Datacenter",
+          "2016-Datacenter-Server-Core",
+          "16.04.0-LTS",
+          "7.2"
+        ],
+        "metadata": {
+          "description": "The Windows/Linux version for the VM. This will pick a fully patched image of this given Windows/Linux version."
+        }
+      },
+      "imagePublisher": {
+        "type": "string",
+        "allowedValues": [
+          "Canonical",
+          "MicrosoftWindowsServer",
+          "RedHat"
+        ],
+        "metadata": {
+          "description": "The Windows/Linux image publisher for the selected VM. "
+        }
+      },
+      "imageOffer": {
+        "type": "string",
+        "allowedValues": [
+          "UbuntuServer",
+          "RHEL",
+          "WindowsServer"
+        ],
+        "metadata": {
+          "description": "The Windows/Linux image for the selected VM. "
+        }
+      }
+    },
+    "variables": {
+      "resourceGroupName": "TestRG01",
+      "osVersionCore": "2016-Datacenter-Server-Core",
+      "osVersionGUI": "2016-Datacenter",
+      "osImagePublisher": "MicrosoftWindowsServer",
+      "osImageOffer": "WindowsServer",
+      "eDiskSize": 20,
+      "addressPrefix": "10.0.0.0/16",
+      "subnetName": "[concat(variables('resourceGroupName'),'Subnet')]",
+      "subnetPrefix": "10.0.0.0/24",
+      "publicIPAddressType": "Dynamic",
+      "publicIPAddressType2": "Dynamic",
+      "nicName": "[concat(variables('vmName'),'Nic1')]",
+      "nicName2": "[concat(variables('vmName2'),'Nic1')]",
+      "vnetName": "[concat(variables('resourceGroupName'),'VNet1')]",
+      "publicIPAddressName": "[concat(variables('vmName'),'PublicIP')]",
+      "publicIPAddressName2": "[concat(variables('vmName2'),'PublicIP')]",
+      "vmName": "dc1",
+      "vmName2": "ca1",
+      "vmSize": "Standard_B2ms",
+      "vmSize2": "Standard_B2ms",
+      "vnetID": "[resourceId('Microsoft.Network/virtualNetworks',variables('vnetName'))]",
+      "subnetRef": "[concat(variables('vnetID'),'/subnets/',variables('subnetName'))]"
+    },
+    "resources": [
+      {
+        "type": "Microsoft.Network/publicIPAddresses",
+        "name": "[variables('publicIPAddressName')]",
+        "apiVersion": "2016-03-30",
+        "location": "[resourceGroup().location]",
+        "properties": {
+          "publicIPAllocationMethod": "[variables('publicIPAddressType')]",
+          "dnsSettings": {
+            "domainNameLabel": "[concat(parameters('dnsLabelPrefix'), substring(uniqueString(),0,6))]"
+          }
+        }
+      },
+      {
+        "type": "Microsoft.Network/publicIPAddresses",
+        "name": "[variables('publicIPAddressName2')]",
+        "apiVersion": "2016-03-30",
+        "location": "[resourceGroup().location]",
+        "properties": {
+          "publicIPAllocationMethod": "[variables('publicIPAddressType2')]",
+          "dnsSettings": {
+            "domainNameLabel": "[concat(parameters('dnsLabelPrefix2'), substring(uniqueString(),0,6))]"
+          }
+        }
+      },
+      {
+        "type": "Microsoft.Network/virtualNetworks",
+        "name": "[variables('vnetName')]",
+        "apiVersion": "2016-03-30",
+        "location": "[resourceGroup().location]",
+        "properties": {
+          "addressSpace": {
+            "addressPrefixes": [
+              "[variables('addressPrefix')]"
+            ]
+          },
+          "dhcpOptions": {
+            "dnsServers": []
+          },
+          "subnets": [
+            {
+              "name": "[variables('subnetName')]",
+              "properties": {
+                "addressPrefix": "[variables('subnetPrefix')]"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "type": "Microsoft.Network/networkInterfaces",
+        "name": "[variables('nicName')]",
+        "apiVersion": "2016-03-30",
+        "location": "[resourceGroup().location]",
+        "dependsOn": [
+          "[resourceId('Microsoft.Network/publicIPAddresses', variables('publicIPAddressName'))]",
+          "[resourceId('Microsoft.Network/virtualNetworks', variables('vnetName'))]"
+        ],
+        "properties": {
+          "ipConfigurations": [
+            {
+              "name": "IPConfig-1",
+              "properties": {
+                "primary": true,
+                "privateIPAddress": "10.0.0.4",
+                "privateIPAllocationMethod": "Static",
+                "publicIPAddress": {
+                  "id": "[resourceId('Microsoft.Network/publicIPAddresses', variables('publicIPAddressName'))]"
+                },
+                "subnet": {
+                  "id": "[variables('subnetRef')]"
+                  }
+                }
+              }
+            ]
+        }
+      },
+      {
+          "type": "Microsoft.Network/networkInterfaces",
+          "name": "[variables('nicName2')]",
+          "apiVersion": "2016-03-30",
+          "location": "[resourceGroup().location]",
+          "dependsOn": [
+            "[resourceId('Microsoft.Network/virtualNetworks', variables('vnetName'))]",
+            "[resourceId('Microsoft.Network/publicIPAddresses', variables('publicIPAddressName2'))]"
+          ],
+          "properties": {
+            "ipConfigurations": [
+            {
+              "name": "IPConfig-2",
+              "properties": {
+                "primary": true,
+                "privateIPAddress": "10.0.0.5",
+                "privateIPAllocationMethod": "Static",
+                "publicIPAddress": {
+                  "id": "[resourceId('Microsoft.Network/publicIPAddresses', variables('publicIPAddressName2'))]"
+                },
+                "subnet": {
+                  "id": "[variables('subnetRef')]"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "type": "Microsoft.Compute/virtualMachines",
+        "name": "[variables('vmName')]",
+        "apiVersion": "2016-04-30-preview",
+        "location": "[resourceGroup().location]",
+        "dependsOn": [
+          "[resourceId('Microsoft.Network/networkInterfaces', variables('nicName'))]"
+        ],
+        "properties": {
+          "hardwareProfile": {
+            "vmSize": "[variables('vmSize2')]"
+          },
+          "osProfile": {
+            "computerName": "[variables('vmName')]",
+            "adminUsername": "[parameters('adminUsername')]",
+            "adminPassword": "[parameters('adminPassword')]",
+            "windowsConfiguration": {
+              "timeZone": "AUS Eastern Standard Time"
+            }
+          },
+          "storageProfile": {
+            "imageReference": {
+              "publisher": "[variables('osImagePublisher')]",
+              "offer": "[variables('osImageOffer')]",
+              "sku": "[variables('osVersionCore')]",
+              "version": "latest"
+            },
+            "osDisk": {
+              "createOption": "FromImage"
+            },
+            "dataDisks": [
+              {
+                "diskSizeGB": "[variables('eDiskSize')]",
+                "lun": 0,
+                "createOption": "Empty"
+              }
+            ]
+          },
+          "networkProfile": {
+            "networkInterfaces": [
+              {
+                "id": "[resourceId('Microsoft.Network/networkInterfaces', variables('nicName'))]",
+                "properties": {
+                  "primary": true
+                }
+              }
+            ]
+          }
+        }
+      },
+      {
+          "type": "Microsoft.Compute/virtualMachines",
+          "name": "[variables('vmName2')]",
+          "apiVersion": "2016-04-30-preview",
+          "location": "[resourceGroup().location]",
+          "dependsOn": [
+            "[resourceId('Microsoft.Network/networkInterfaces', variables('nicName2'))]"
+          ],
+          "properties": {
+            "hardwareProfile": {
+              "vmSize": "[variables('vmSize')]"
+            },
+            "osProfile": {
+              "computerName": "[variables('vmName2')]",
+              "adminUsername": "[parameters('adminUsername')]",
+              "adminPassword": "[parameters('adminPassword')]",
+              "windowsConfiguration": {
+                "timeZone": "AUS Eastern Standard Time"
+              }
+            },
+            "storageProfile": {
+              "imageReference": {
+                "publisher": "[variables('osImagePublisher')]",
+                "offer": "[variables('osImageOffer')]",
+                "sku": "[variables('osVersionGUI')]",
+                "version": "latest"
+              },
+              "osDisk": {
+                "createOption": "FromImage"
+              }
+            },
+            "networkProfile": {
+              "networkInterfaces": [
+                {
+                  "id": "[resourceId('Microsoft.Network/networkInterfaces', variables('nicName2'))]",
+                  "properties": {
+                    "primary": true
+                  }
+                }
+              ]
+            }
+          }
+        }
+    ],
+    "outputs": {
+      "hostname": {
+        "type": "string",
+        "value": "[reference(variables('publicIPAddressName')).dnsSettings.fqdn]"
+      },
+      "hostname2": {
+        "type": "string",
+        "value": "[reference(variables('publicIPAddressName2')).dnsSettings.fqdn]"
+      }
+    }
+  }
