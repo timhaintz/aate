@@ -5,7 +5,7 @@ configuration BuildFirstCA
 
     Import-DscResource -ModuleName 'PSDesiredStateConfiguration'
     Import-DscResource -ModuleName 'xAdcsDeployment'
-    Import-DscResource -ModuleName 'xComputerManagement'
+    Import-DscResource -ModuleName 'ComputerManagementDsc'
     Import-DscResource -ModuleName 'NetworkingDsc'
 
     Node $AllNodes.Where{$_.Role -eq "Enterprise Root Certificate Authority"}.Nodename
