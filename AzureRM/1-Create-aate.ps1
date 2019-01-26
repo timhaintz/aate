@@ -133,7 +133,7 @@ $automationCredDomain = 'domainCred'
 $automationCredSafeMode = 'safemodeCred'
 #DSC Module names must be in lowercase to search and download them correctly
 $dscModulesToImport = 'xactivedirectory', `
-                      'xnetworking', `
+                      'networkingdsc', `
                       'xdnsserver', `
                       'xadcsdeployment', `
                       'computermanagementdsc', `
