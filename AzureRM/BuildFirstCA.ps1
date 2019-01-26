@@ -10,7 +10,7 @@ configuration BuildFirstCA
 
     Node $AllNodes.Where{$_.Role -eq "Enterprise Root Certificate Authority"}.Nodename
     {
-        xDnsServerAddress DnsServerAddress
+        DnsServerAddress DnsServerAddress
         {
             Address = '10.0.0.4'
             InterfaceAlias = "Ethernet"
