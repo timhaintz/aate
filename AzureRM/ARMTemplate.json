@@ -98,7 +98,7 @@
         "properties": {
           "publicIPAllocationMethod": "[variables('publicIPAddressType')]",
           "dnsSettings": {
-            "domainNameLabel": "[concat(parameters('dnsLabelPrefix'), substring(uniqueString(),0,6))]"
+            "domainNameLabel": "[concat(parameters('dnsLabelPrefix'), substring(uniqueString(subscription().subscriptionId),0,6))]"
           }
         }
       },
@@ -110,7 +110,7 @@
         "properties": {
           "publicIPAllocationMethod": "[variables('publicIPAddressType2')]",
           "dnsSettings": {
-            "domainNameLabel": "[concat(parameters('dnsLabelPrefix2'), substring(uniqueString(),0,6))]"
+            "domainNameLabel": "[concat(parameters('dnsLabelPrefix2'), substring(uniqueString(subscription().subscriptionId),0,6))]"
           }
         }
       },
