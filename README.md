@@ -47,9 +47,9 @@ Remove-AzureRMResourceGroup should be used to delete the entire environment and 
 
 ## URLs used to build initial environment
 
-https://blogs.msdn.microsoft.com/azuredev/2017/02/11/iac-on-azure-an-introduction-of-infrastructure-as-code-iac-with-azure-resource-manager-arm-template/
-https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-authoring-templates
-https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-create-first-template
+[IAC on Azure RM](https://blogs.msdn.microsoft.com/azuredev/2017/02/11/iac-on-azure-an-introduction-of-infrastructure-as-code-iac-with-azure-resource-manager-arm-template/)
+[Azure RM - authoring templates](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-authoring-templates)
+[Azure RM - create first template](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-create-first-template)
 https://blogs.msdn.microsoft.com/azuredev/2017/02/25/iac-on-azure-windows-server-virtual-machine-deployment-made-easy-with-arm-template/
 https://azure.microsoft.com/en-gb/regions/services/
 https://docs.microsoft.com/en-gb/azure/virtual-machines/windows/sizes
