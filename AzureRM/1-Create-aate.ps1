@@ -93,17 +93,17 @@
 try
 {
     $azureRMContext = Get-AzureRmContext -ErrorAction Stop
-    if($azureRMContext.Account.id -ne $azureRMAcctName)
+    if($azureRMContext.Account.id)
     {
-        Remove-AzureRmAccount -ErrorAction SilentlyContinue
-        Login-AzureRmAccount
+        Write-Output "Already logged in"
     }
 }
 catch
 {
     if ($_ -like "*Login-AzureRmAccount to login*")
     {
-        #Login-AzureRmAccount
+        Remove-AzureRmAccount -ErrorAction SilentlyContinue
+        Login-AzureRmAccount
     }
 }
 
@@ -117,7 +117,7 @@ $storageSKU = 'Standard_LRS'
 $storageKind = 'Storage'
 $storageContainer = 'templates'
 $storagePermission = 'Container'
-$createVMJSON = "$PSScriptRoot\CreateVMTemplatefromAzureDeployTemplate.json"
+$createVMJSON = "$PSScriptRoot\ARMTemplate.json"
 $createVMJSONleaf = $createVMJSON | Split-Path -Leaf
 $createVMparamatersJSON = "$PSScriptRoot\parameters.json"
 $createVMparamatersJSONleaf = $createVMparamatersJSON | Split-Path -Leaf
