@@ -14,29 +14,29 @@ Remove-AzureRMResourceGroup should be used to delete the entire environment and 
 3. Once account is setup, open PowerShell window as Administrator
 4. Run Login-AzureRMAccount and follow the login prompts
 5. Run Get-AzureRMContext to get the top three variables information
-    a. The Name return value has $azureRMAcctName and $subscriptionID information
-    b. The TenantID return value has $tenantID information
+    1. The Name return value has $azureRMAcctName and $subscriptionID information
+    2. The TenantID return value has $tenantID information
 6. If you want a domain other than timhaintz.com, change the $dscDomainName from timhaintz.com.
-    a. Please don't use a publicly registered domain. DNS can get confused.
+    1. Please don't use a publicly registered domain. DNS can get confused.
     *Please only use a .com extension. .com.au or .net for example are not supported*
 7. Run the script
-    a. ./1-Create-aate.ps1
+    1. ./1-Create-aate.ps1
 8. Username and password when you have to login to dc1 before DSC has applied:
-    a. UserName: localhost\azureadmin
-    b. Password: Azure12345678
+    1. UserName: localhost\azureadmin
+    2. Password: Azure12345678
 9. After setting up the E drive. Please wait 5 minutes. There is no feedback from AzureRM into the PowerShell window.
     It looks like it isn't doing anything. It is setting up the Domain Controller communication to the AzureRM Pull server.
     If you browse the web interface:
-    a. [Portal](https://portal.azure.com)
-    b. Automation Accounts
-    c. TestAutomationAcct
-    d. DSC nodes
+    1. [Portal](https://portal.azure.com)
+    2. Automation Accounts
+    3. TestAutomationAcct
+    4. DSC nodes
     You will see that it is running the DSC configuration on the server
 Post execution
 10. Username and password to login to the server once DSC has applied:
-    a. UserName: DomainNameChosen\azureadmin
-        i. Default is: timhaintz\azureadmin
-    b. Password: Azure12345678
+    1. UserName: DomainNameChosen\azureadmin
+        1. Default is: timhaintz\azureadmin
+    2. Password: Azure12345678
 11. Remove-AzureRMResourceGroup -Name $resourceGroupName should be used to delete the entire environment and start fresh.
     *Deletion takes about 5 - 10 minutes*
 
