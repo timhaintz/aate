@@ -68,7 +68,7 @@
         a. Please don't use a publicly registered domain. DNS can get confused.
        ***Please only use a .com extension. .com.au or .net for example are not supported***
     7. Run the script
-        a. ./1-Create-aate.ps1
+        a. .\1-Create-aate.ps1
     8. Username and password when you have to login to dc1 before DSC has applied:
         a. UserName: localhost\azureadmin
         b. Password: Azure12345678
