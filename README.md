@@ -20,7 +20,7 @@ Remove-AzureRMResourceGroup should be used to delete the entire environment and 
     1. Please don't use a publicly registered domain. DNS can get confused.
     *Please only use a .com extension. .com.au or .net for example are not supported*
 7. Run the script
-    1. ./1-Create-aate.ps1
+    1. .\1-Create-aate.ps1
 8. Username and password when you have to login to dc1 before DSC has applied:
     1. UserName: localhost\azureadmin
     2. Password: Azure12345678
