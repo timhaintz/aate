@@ -9,7 +9,7 @@ Remove-AzureRMResourceGroup should be used to delete the entire environment and 
 
 ## PRE EXECUTION and EXECUTION
 
-1. How to get AzureRM modules installed: [Install AzureRM modules]https://docs.microsoft.com/en-us/powershell/azure/install-azurerm-ps?view=azurermps-5.0.0
+1. How to get AzureRM modules installed: [Install AzureRM modules](https://docs.microsoft.com/en-us/powershell/azure/install-azurerm-ps?view=azurermps-5.0.0)
 2. Create free Azure account: [Free Azure Account](https://azure.microsoft.com/en-au/free/)
 3. Once account is setup, open PowerShell window as Administrator
 4. Run Login-AzureRMAccount and follow the login prompts
