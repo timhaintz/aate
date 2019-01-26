@@ -7,7 +7,7 @@ configuration BuildFirstDC
     $safemodeAdministratorCred = Get-AutomationPsCredential -Name "safemodecred"
 
     Import-DscResource -ModuleName 'xActiveDirectory'
-    Import-DscResource -ModuleName 'xNetworking'
+    Import-DscResource -ModuleName 'NetworkingDsc'
     Import-DscResource -ModuleName 'PSDesiredStateConfiguration'
     Import-DscResource -ModuleName 'xDnsServer'
     Import-DscResource -ModuleName 'StorageDsc'
