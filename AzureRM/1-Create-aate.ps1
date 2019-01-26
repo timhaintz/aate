@@ -102,7 +102,6 @@ catch
 {
     if ($_ -like "*Login-AzureRmAccount to login*")
     {
-        Remove-AzureRmAccount -ErrorAction SilentlyContinue
         Login-AzureRmAccount
     }
 }
