@@ -28,9 +28,9 @@ Remove-AzureRMResourceGroup should be used to delete the entire environment and 
     It looks like it isn't doing anything. It is setting up the Domain Controller communication to the AzureRM Pull server.
     If you browse the web interface:
     1. [Portal](https://portal.azure.com)
-    2. Automation Accounts
-    3. TestAutomationAcct
-    4. DSC nodes
+        1. Automation Accounts
+        2. TestAutomationAcct
+        3. DSC nodes
     You will see that it is running the DSC configuration on the server
 
 ## POST EXECUTION
