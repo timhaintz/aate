@@ -6,14 +6,14 @@ configuration BuildFirstCA
     Import-DscResource -ModuleName 'PSDesiredStateConfiguration'
     Import-DscResource -ModuleName 'xAdcsDeployment'
     Import-DscResource -ModuleName 'xComputerManagement'
-    Import-DscResource -ModuleName 'xNetworking'
+    Import-DscResource -ModuleName 'NetworkingDsc'
 
     Node $AllNodes.Where{$_.Role -eq "Enterprise Root Certificate Authority"}.Nodename
     {
         xDnsServerAddress DnsServerAddress
         {
             Address = '10.0.0.4'
-            InterfaceAlias = "Ethernet 2"
+            InterfaceAlias = "Ethernet"
             AddressFamily = 'IPv4'
             Validate = $true
         }
