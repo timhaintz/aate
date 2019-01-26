@@ -22,7 +22,7 @@ configuration BuildFirstCA
             Name          = 'ca1'
             DomainName    = $domainName
             Credential    = $domainCred
-            DependsOn = '[xDnsServerAddress]DnsServerAddress'
+            DependsOn = '[DnsServerAddress]DnsServerAddress'
         }
         WindowsFeature ADCS-Cert-Authority
         {
