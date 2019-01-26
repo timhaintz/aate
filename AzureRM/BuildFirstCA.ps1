@@ -17,7 +17,7 @@ configuration BuildFirstCA
             AddressFamily = 'IPv4'
             Validate = $true
         }
-        xComputer JoinDomain
+        Computer JoinDomain
         {
             Name          = 'ca1'
             DomainName    = $domainName
@@ -28,7 +28,7 @@ configuration BuildFirstCA
         {
            Ensure = 'Present'
            Name   = 'ADCS-Cert-Authority'
-           DependsOn = '[xComputer]JoinDomain'
+           DependsOn = '[Computer]JoinDomain'
         }
         xADCSCertificationAuthority ADCS
         {
