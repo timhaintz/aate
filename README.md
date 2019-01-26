@@ -32,13 +32,18 @@ Remove-AzureRMResourceGroup should be used to delete the entire environment and 
     3. TestAutomationAcct
     4. DSC nodes
     You will see that it is running the DSC configuration on the server
-Post execution
-10. Username and password to login to the server once DSC has applied:
+
+## POST EXECUTION
+
+1. Username and password to login to the server once DSC has applied:
     1. UserName: DomainNameChosen\azureadmin
         1. Default is: timhaintz\azureadmin
     2. Password: Azure12345678
-11. Remove-AzureRMResourceGroup -Name $resourceGroupName should be used to delete the entire environment and start fresh.
-    *Deletion takes about 5 - 10 minutes*
+
+## REMOVE ENVIRONMENT
+
+1. Remove-AzureRMResourceGroup -Name $resourceGroupName should be used to delete the entire environment and start fresh.
+    1. *Deletion takes about 5 - 10 minutes*
 
 ## URLs used to build initial environment
 
