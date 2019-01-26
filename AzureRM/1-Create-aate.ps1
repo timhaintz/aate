@@ -136,7 +136,7 @@ $dscModulesToImport = 'xactivedirectory', `
                       'xnetworking', `
                       'xdnsserver', `
                       'xadcsdeployment', `
-                      'xcomputermanagement', `
+                      'computermanagementdsc', `
                       'storagedsc'
 $dscConfigNameDC = "$PSScriptRoot\BuildFirstDC.ps1"
 $buildFirstDC = 'BuildFirstDC'
