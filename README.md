@@ -21,7 +21,8 @@ Remove-AzureRMResourceGroup should be used to delete the entire environment and 
 
 1. Clone the repository from git
 ![Git Clone](/assets/gitClone.png)
-2. ```powershell
+2.
+```powershell
 git clone https://github.com/timhaintz/aate.git
 ```
 3. Change Directory into the newly created repository and then change directory
