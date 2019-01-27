@@ -12,26 +12,30 @@ Remove-AzureRMResourceGroup should be used to delete the entire environment and 
 1. How to get AzureRM modules installed: [Install AzureRM modules](https://docs.microsoft.com/en-us/powershell/azure/install-azurerm-ps?view=azurermps-5.0.0)
 2. Create a free Azure account: [Free Azure Account](https://azure.microsoft.com/en-au/free/)
 3. Once account is setup, open a PowerShell window as Administrator
-4. Run Login-AzureRMAccount and follow the login prompts
+4. If you want to pre-login, run Login-AzureRMAccount and follow the login prompts.
 5. If you want a domain other than timhaintz.com, change the $dscDomainName from timhaintz.com.
     1. Please don't use a publicly registered domain. DNS can get confused.
     *Please only use a .com extension. .com.au or .net for example are not supported*
 
 ## EXECUTION
 
-1. Run the script
+1. Clone the repository from git
+![Git Clone](/assets/gitclone.png)
+2. ```powershell
+git clone https://github.com/timhaintz/aate.git
+```
+3. Change Directory into the newly created repository and then change directory
+again into the AzureRM directory.
+4. Run the script
     1. .\1-Create-aate.ps1
-2. Username and password when you have to login to dc1 before DSC has applied:
+
+5. Username and password when you have to login to dc1 before DSC has applied:
     1. UserName: localhost\azureadmin
     2. Password: Azure12345678
-3. After setting up the E drive. Please wait 5 minutes. There is no feedback from AzureRM into the PowerShell window.
-    It looks like it isn't doing anything. It is setting up the Domain Controller communication to the AzureRM Pull server.
-    If you browse the web interface:
+6. If you browse the web interface:
     1. [Portal](https://portal.azure.com)
-        1. Automation Accounts
-        2. TestAutomationAcct
-        3. DSC nodes
-    You will see that it is running the DSC configuration on the server
+        1. All resources
+    You will see that the environment being built.
 
 ## POST EXECUTION
 
