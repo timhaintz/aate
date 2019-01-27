@@ -31,14 +31,13 @@ git clone https://github.com/timhaintz/aate.git
 again into the AzureRM directory.
 4. Run the script
     1. .\1-Create-aate.ps1
-
-5. Username and password when you have to login to dc1 before DSC has applied:
+5. Username and password if you have to login to dc1 before DSC has applied:
     1. UserName: localhost\azureadmin
     2. Password: Azure12345678
-6. If you browse the web interface:
+6. Browse the web interface:
     1. [Portal](https://portal.azure.com)
         1. All resources
-    You will see that the environment being built.
+7. You will see the environment being built.
 
 ## POST EXECUTION
 
