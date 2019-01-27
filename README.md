@@ -37,7 +37,9 @@ again into the AzureRM directory.
 6. Browse the web interface:
     1. [Portal](https://portal.azure.com)
         1. All resources
-7. You will see the environment being built.
+        2. Choose the correct subscription
+7. You can observe the environment being built.
+![All resources](/assets/allResources.png)
 
 ## POST EXECUTION
 
