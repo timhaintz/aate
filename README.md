@@ -51,7 +51,7 @@ again into the AzureRM directory.
 
 ## REMOVE ENVIRONMENT
 
-1. Remove-AzureRMResourceGroup -Name $resourceGroupName should be used to delete the entire environment and start fresh.
+1. `Remove-AzureRMResourceGroup -Name $resourceGroupName` should be used to delete the entire environment and start fresh.
     1. *Deletion takes about 5 - 10 minutes*
 2. You can login to [Portal](https://portal.azure.com)
     1. Resource groups
