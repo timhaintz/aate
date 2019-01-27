@@ -28,7 +28,7 @@ you want to save the repository to and then clone the remote repository.
 ```powershell
 git clone https://github.com/timhaintz/aate.git
 ```
-3. Change Directory into the newly created repository and then change directory
+3. Change Directory into the newly created repository and then Change Directory
 again into the AzureRM directory.
 4. Run the script
     1. .\1-Create-aate.ps1
