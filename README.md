@@ -7,24 +7,24 @@ Certificate Authority in Azure Resource Manager.
 This is intended to be used to create a green fields environment. Once testing is completed,
 Remove-AzureRMResourceGroup should be used to delete the entire environment and start fresh.
 
-## PRE EXECUTION and EXECUTION
+## PRE EXECUTION
 
 1. How to get AzureRM modules installed: [Install AzureRM modules](https://docs.microsoft.com/en-us/powershell/azure/install-azurerm-ps?view=azurermps-5.0.0)
-2. Create free Azure account: [Free Azure Account](https://azure.microsoft.com/en-au/free/)
-3. Once account is setup, open PowerShell window as Administrator
+2. Create a free Azure account: [Free Azure Account](https://azure.microsoft.com/en-au/free/)
+3. Once account is setup, open a PowerShell window as Administrator
 4. Run Login-AzureRMAccount and follow the login prompts
-5. Run Get-AzureRMContext to get the top three variables information
-    1. The Name return value has $azureRMAcctName and $subscriptionID information
-    2. The TenantID return value has $tenantID information
-6. If you want a domain other than timhaintz.com, change the $dscDomainName from timhaintz.com.
+5. If you want a domain other than timhaintz.com, change the $dscDomainName from timhaintz.com.
     1. Please don't use a publicly registered domain. DNS can get confused.
     *Please only use a .com extension. .com.au or .net for example are not supported*
-7. Run the script
+
+## EXECUTION
+
+1. Run the script
     1. .\1-Create-aate.ps1
-8. Username and password when you have to login to dc1 before DSC has applied:
+2. Username and password when you have to login to dc1 before DSC has applied:
     1. UserName: localhost\azureadmin
     2. Password: Azure12345678
-9. After setting up the E drive. Please wait 5 minutes. There is no feedback from AzureRM into the PowerShell window.
+3. After setting up the E drive. Please wait 5 minutes. There is no feedback from AzureRM into the PowerShell window.
     It looks like it isn't doing anything. It is setting up the Domain Controller communication to the AzureRM Pull server.
     If you browse the web interface:
     1. [Portal](https://portal.azure.com)
