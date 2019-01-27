@@ -11,7 +11,7 @@ This is intended to be used to create a green fields environment. Once testing i
 
 ## PRE EXECUTION
 
-1. How to get AzureRM modules installed: [Install AzureRM modules](https://docs.microsoft.com/en-us/powershell/azure/install-azurerm-ps?view=azurermps-5.0.0)
+1. [Install AzureRM modules](https://docs.microsoft.com/en-us/powershell/azure/install-azurerm-ps?view=azurermps-5.0.0)
 2. Create a free Azure account: [Free Azure Account](https://azure.microsoft.com/en-au/free/)
 3. Once account is setup, open a PowerShell window as Administrator
 4. If you want to pre-login, run Login-AzureRMAccount and follow the login prompts.
