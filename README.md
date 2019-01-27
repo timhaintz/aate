@@ -7,7 +7,7 @@ Certificate Authority in Azure Resource Manager.
 This is intended to be used to create a green fields environment. Once testing is completed,
 `Remove-AzureRMResourceGroup` should be used to delete the entire environment and start fresh.
 
-**Please note, the username and password are weak. They can be changed if required.**
+**Please note, the default username and password are weak. They can be changed if required.**
 
 ## PRE EXECUTION
 
@@ -17,7 +17,7 @@ This is intended to be used to create a green fields environment. Once testing i
 4. If you want to pre-login, run Login-AzureRMAccount and follow the login prompts.
 5. If you want a domain other than timhaintz.com, change the $dscDomainName from timhaintz.com.
     1. Please don't use a publicly registered domain. DNS can get confused.
-    *Please only use a .com extension. .com.au or .net for example are not supported*
+    2. *Please only use a .com extension. .com.au or .net for example are not supported*
 
 ## EXECUTION
 
