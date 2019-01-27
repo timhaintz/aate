@@ -5,7 +5,7 @@
 This Open Source Project is desinged to create an automatically built Active Directory domain and
 Certificate Authority in Azure Resource Manager.
 This is intended to be used to create a green fields environment. Once testing is completed,
-Remove-AzureRMResourceGroup should be used to delete the entire environment and start fresh.
+`Remove-AzureRMResourceGroup` should be used to delete the entire environment and start fresh.
 
 **Please note, the username and password are weak. They can be changed if required.**
 
