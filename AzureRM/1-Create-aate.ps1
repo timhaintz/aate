@@ -95,7 +95,7 @@ try
     $azureRMContext = Get-AzureRmContext -ErrorAction Stop
     if($azureRMContext.Account.id)
     {
-        Write-Output "Already logged in. Will not prompt fo username and password."
+        Write-Output "Already logged in. Will not prompt for username and password."
     }
 }
 catch
