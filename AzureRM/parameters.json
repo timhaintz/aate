@@ -6,7 +6,7 @@
     "adminPassword": { "value": "Azure12345678" },
     "dnsLabelPrefix": { "value": "dc1pubdns"},
     "dnsLabelPrefix2": { "value": "ca1pubdns"},
-    "OSVersion": { "value": "2016-Datacenter-Server-Core"},
+    "OSVersion": { "value": "2016-Datacenter"},
     "imagePublisher": { "value": "MicrosoftWindowsServer"},
     "imageOffer": {"value": "WindowsServer"}
     }
