@@ -100,9 +100,9 @@ try
 }
 catch
 {
-    if ($_ -like "*Login-AzureRmAccount to login*")
+    if ($_ -like "*Connect-AzureRmAccount to login*")
     {
-        Login-AzureRmAccount
+        Connect-AzureRmAccount
     }
 }
 
